@@ -1,0 +1,31 @@
+# ==========================================================
+# ROS参数配置文件，用于 ar_multi_replace_node.py
+# ==========================================================
+
+# --- 全局设置 ---
+orb_feature_count: 2000
+
+# --- 默认匹配参数 ---
+# 如果某个模板对没有指定自己的参数，将使用这些值
+default_params:
+  MIN_MATCH_COUNT: 10
+  LOWE_RATIO_THRESHOLD: 0.7
+  RANSAC_REPROJ_THRESHOLD: 4.0
+  MIN_ANGLE_THRESHOLD: 35.0
+  MAX_ANGLE_THRESHOLD: 130.0
+
+# --- 模板配置中心 ---
+# 在这里定义所有需要识别和替换的图像对
+template_pairs:
+  book_cover: # 这是模板的唯一名称
+    template_path: "$(find ar_replace_pkg)/resources/template_1.png"
+    replace_path: "$(find ar_replace_pkg)/resources/replace_template_1.png"
+    # 此模板未定义 "params"，将完全使用上面的 "default_params"
+
+  card: # 这是另一个模板的唯一名称
+    template_path: "$(find ar_replace_pkg)/resources/template_2.png"
+    replace_path: "$(find ar_replace_pkg)/resources/replace_template_2.png"
+    params:
+      MIN_MATCH_COUNT: 10          # 降低最小匹配数要求
+      LOWE_RATIO_THRESHOLD: 0.75   # 允许质量稍差一些的匹配
+      MIN_ANGLE_THRESHOLD: 25.0    # 允许更大的透视形变
