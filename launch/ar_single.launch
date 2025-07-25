@@ -1,0 +1,9 @@
+<launch>
+    <arg name="node_name" default="ar_single_replace_node" />
+
+    <arg name="config_file" default="$(find ar_replace_pkg)/config/single_template_config.yaml" />
+
+    <rosparam command="load" file="$(arg config_file)" ns="$(arg node_name)"/>
+
+    <node name="$(arg node_name)" pkg="ar_replace_pkg" type="single_detect.py" output="screen" />
+</launch>
