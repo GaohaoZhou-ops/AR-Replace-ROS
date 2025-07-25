@@ -1,0 +1,19 @@
+# ==========================================================
+# ROS参数配置文件，用于 ar_replace_node.py (单个模板)
+# ==========================================================
+
+# --- 模板文件路径 ---
+# 使用 $(find <pkg_name>) 来确保路径的灵活性
+template_path: "$(find ar_replace_pkg)/resources/template_1.png"
+replace_path: "$(find ar_replace_pkg)/resources/replace_template_1.png"
+
+
+# --- 匹配与验证参数 ---
+# 通过调整这些值，可以改变算法的灵敏度、稳定性和性能
+params:
+  MIN_MATCH_COUNT: 10
+  LOWE_RATIO_THRESHOLD: 0.7
+  RANSAC_REPROJ_THRESHOLD: 4.0
+  MIN_ANGLE_THRESHOLD: 35.0
+  MAX_ANGLE_THRESHOLD: 130.0
+  ORB_FEATURE_COUNT: 2000
